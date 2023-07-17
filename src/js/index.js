@@ -99,6 +99,10 @@ function nextSong() {
     playSong();
 }
 
+function updateProgressBar() {
+    
+}
+
 
 // Aqui estão as execuções de funções
 initializeSong();
@@ -106,5 +110,6 @@ initializeSong();
 
 // Aqui estão os addEventListener
 play.addEventListener('click', playPauseDecider);
-previous.addEventListener('click', previousSong)
-next.addEventListener('click', nextSong)
+previous.addEventListener('click', previousSong);
+next.addEventListener('click', nextSong);
+song.addEventListener('timeupdate', updateProgressBar);
