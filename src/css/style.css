@@ -1,86 +1,86 @@
 body {
-  background-image: linear-gradient(rgb(59, 88, 93), rgb(29, 40, 42));
-  height: 100vh;
-  color: white;
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    background-image: linear-gradient(rgb(59, 88, 93), rgb(29, 40, 42));
+    height: 100vh;
+    color: white;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 button {
-  background-color: inherit;
-  border: none;
-  color: inherit;
+    background-color: inherit;
+    border: none;
+    color: inherit;
 }
 
 #below-cover {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin: 3em 0 1em 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3em 0 1em 0;
 }
 
 #button-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .button {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 .button:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .button-navigate {
-  font-size: 3em;
+    font-size: 3em;
 }
 
 .button-biggest {
-  font-size: 4em;
+    font-size: 4em;
 }
 
 #cover {
-  width: 450px;
-  height: 450px;
+    width: 450px;
+    height: 450px;
 }
 
 #playlist-title {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 1em 0 4em 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1em 0 4em 0;
 }
 
 #song-name {
-  font-size: 1.6em;
-  font-weight: bolder;
+    font-size: 1.6em;
+    font-weight: bolder;
 }
 
-.light-color{
-  color: rgb(139, 153, 156);
+.light-color {
+    color: rgb(139, 153, 156);
 }
 
 #progress-bar {
-  background-color: rgb(139, 153, 156);
-  height: 3px;
-  width: 100%;
-  border-radius: 15px;
+    background-color: rgb(139, 153, 156);
+    height: 3px;
+    width: 100%;
+    border-radius: 15px;
 }
 
 #current-progress {
-  --progress: ;
-  background-color: white;
-  height: inherit;
-  width: var(--progress);
-  border-radius: inherit;
+    --progress: ;
+    background-color: white;
+    height: inherit;
+    width: var(--progress);
+    border-radius: inherit;
 }
 
 #progress-container {
-  padding-bottom: 1em;
+    padding-bottom: 1em;
 }

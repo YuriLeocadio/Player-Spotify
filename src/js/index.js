@@ -6,48 +6,52 @@ const cover = document.getElementById('cover');
 const play = document.getElementById('play');
 const next = document.getElementById('next');
 const previous = document.getElementById('previous');
-const currentProgress =document.getElementById('current-progress');
-const progressContainer =document.getElementById('progress-container');
-
+const currentProgress = document.getElementById('current-progress');
+const progressContainer = document.getElementById('progress-container');
 
 // Aqui estão as váriaveis
 const Felina = {
-    songName : 'Felina',
-    artist : 'Wiu',
-    image : 'felina',
-    music : 'felina'
+    songName: 'Felina',
+    artist: 'Wiu',
+    image: 'felina',
+    music: 'felina',
 };
 const Coracao_De_Gelo = {
-    songName : 'Coração de gelo',
-    artist : 'Wiu',
-    image : 'coração_de_gelo',
-    music : 'coração_de_gelo'
+    songName: 'Coração de gelo',
+    artist: 'Wiu',
+    image: 'coração_de_gelo',
+    music: 'coração_de_gelo',
 };
 const Mil_Maneiras = {
-    songName : 'Mil Maneiras',
-    artist : 'Veigh',
-    image : 'album_veigh',
-    music : 'mil_maneiras'
+    songName: 'Mil Maneiras',
+    artist: 'Veigh',
+    image: 'album_veigh',
+    music: 'mil_maneiras',
 };
 const Novo_Balanco = {
-    songName : 'Novo Balanço',
-    artist : 'Veigh',
-    image : 'album_veigh',
-    music : 'novo_balanço'
+    songName: 'Novo Balanço',
+    artist: 'Veigh',
+    image: 'album_veigh',
+    music: 'novo_balanço',
 };
 const WYS_Snowman = {
-    songName : 'WYS Snowman',
-    artist : 'Snowman',
-    image : 'lofi',
-    music : 'WYS'
+    songName: 'WYS Snowman',
+    artist: 'Snowman',
+    image: 'lofi',
+    music: 'WYS',
 };
 
 let isPlaying = false;
 
-const playlist = [Felina, Coracao_De_Gelo, Mil_Maneiras, Novo_Balanco, WYS_Snowman];
+const playlist = [
+    Felina,
+    Coracao_De_Gelo,
+    Mil_Maneiras,
+    Novo_Balanco,
+    WYS_Snowman,
+];
 
 let index = 0;
-
 
 // Aqui estão as funções
 function playSong() {
@@ -66,8 +70,7 @@ function pauseSong() {
 function playPauseDecider() {
     if (isPlaying === true) {
         pauseSong();
-    }
-    else {
+    } else {
         playSong();
     }
 }
@@ -80,10 +83,9 @@ function initializeSong() {
 }
 
 function previousSong() {
-    if(index === 0) {
+    if (index === 0) {
         index = playlist.length - 1;
-    }
-    else {
+    } else {
         index -= 1;
     }
     initializeSong();
@@ -91,10 +93,9 @@ function previousSong() {
 }
 
 function nextSong() {
-    if(index === playlist.length - 1) {
+    if (index === playlist.length - 1) {
         index = 0;
-    }
-    else {
+    } else {
         index += 1;
     }
     initializeSong();
@@ -102,21 +103,19 @@ function nextSong() {
 }
 
 function updateProgressBar() {
-    const barWidth = (song.currentTime/song.duration)*100;
+    const barWidth = (song.currentTime / song.duration) * 100;
     currentProgress.style.setProperty('--progress', `${barWidth}%`);
 }
 
 function jumpTo(event) {
     const width = progressContainer.clientWidth;
     const clickPosition = event.offsetX;
-    const jumpToTime = (clickPosition/width)* song.duration;
+    const jumpToTime = (clickPosition / width) * song.duration;
     song.currentTime = jumpToTime;
 }
 
-
 // Aqui estão as execuções de funções
 initializeSong();
-
 
 // Aqui estão os addEventListener
 play.addEventListener('click', playPauseDecider);
