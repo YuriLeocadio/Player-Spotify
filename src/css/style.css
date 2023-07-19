@@ -31,9 +31,6 @@ button {
 
 .button {
     font-size: 1.5em;
-}
-
-.button:hover {
     cursor: pointer;
 }
 
@@ -82,5 +79,17 @@ button {
 }
 
 #progress-container {
-    padding-bottom: 1em;
+    cursor: pointer;
+}
+
+.button-active {
+    color: rgb(0, 183, 107);
+}
+
+#time-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: smaller;
+    margin-top: 0.5em;
 }
