@@ -6,7 +6,6 @@ const cover = document.getElementById('cover');
 const play = document.getElementById('play');
 const next = document.getElementById('next');
 const previous = document.getElementById('previous');
-const likeButton = document.getElementById('like');
 const currentProgress = document.getElementById('current-progress');
 const progressContainer = document.getElementById('progress-container');
 const shuffleButton = document.getElementById('shuffle');
@@ -20,35 +19,30 @@ const Felina = {
     artist: 'Wiu',
     image: 'felina',
     music: 'felina',
-    liked: false,
 };
 const Coracao_De_Gelo = {
     songName: 'Coração de gelo',
     artist: 'Wiu',
     image: 'coração_de_gelo',
     music: 'coração_de_gelo',
-    liked: false,
 };
 const Mil_Maneiras = {
     songName: 'Mil Maneiras',
     artist: 'Veigh',
     image: 'album_veigh',
     music: 'mil_maneiras',
-    liked: false,
 };
 const Novo_Balanco = {
     songName: 'Novo Balanço',
     artist: 'Veigh',
     image: 'album_veigh',
     music: 'novo_balanço',
-    liked: false,
 };
 const WYS_Snowman = {
     songName: 'WYS Snowman',
     artist: 'Snowman',
     image: 'lofi',
     music: 'WYS',
-    liked: false,
 };
 
 let isPlaying = false;
@@ -62,7 +56,6 @@ const originalPlaylist = [
     Novo_Balanco,
     WYS_Snowman,
 ];
-
 let sortedPlaylist = [...originalPlaylist];
 let index = 0;
 
@@ -85,16 +78,6 @@ function playPauseDecider() {
         pauseSong();
     } else {
         playSong();
-    }
-}
-
-function likeButtonRender() {
-    if (sortedPlaylist[index].liked === false) {
-        likeButton.querySelector('.bi').classList.remove('bi-heart');
-        likeButton.querySelector('.bi').classList.add('bi-heart-fill');
-    } else {
-        likeButton.querySelector('bi').classList.remove('bi-heart-fill');
-        likeButton.querySelector('bi').classList.add('bi-heart');
     }
 }
 
@@ -128,7 +111,8 @@ function nextSong() {
 function updateProgress() {
     const barWidth = (song.currentTime / song.duration) * 100;
     currentProgress.style.setProperty('--progress', `${barWidth}%`);
-    songTime.innerText = toHHMMSS(song.currentTime);
+    songTime.textContent = toHHMMSS(Math.floor(song.currentTime));
+    totalTime.textContent = toHHMMSS(Math.floor(song.duration));
 }
 
 function jumpTo(event) {
@@ -180,19 +164,15 @@ function nextOrRepeat() {
     }
 }
 
-function toHHMMSS(originalNumber) {
-    let hours = Math.floor(originalNumber / 3600);
-    let min = Math.floor((originalNumber - hours * 3600) / 60);
-    let secs = Math.floor(originalNumber - hours * 3600 - min * 60);
+function toHHMMSS(seconds) {
+    let min = Math.floor(seconds / 60);
+    let secs = seconds % 60;
 
-    return
-    `${hours.toString().padStart(2, '0')}:${min
-        .toString()
-        .padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-}
+    if (secs < 10) {
+        secs = '0' + secs;
+    }
 
-function updateTotalTime() {
-    totalTime.innerText = toHHMMSS(song.duration);
+    return min + ':' + secs;
 }
 
 // Aqui estão as execuções de funções
@@ -204,8 +184,7 @@ previous.addEventListener('click', previousSong);
 next.addEventListener('click', nextSong);
 song.addEventListener('timeupdate', updateProgress);
 song.addEventListener('ended', nextOrRepeat);
-song.addEventListener('loadedmetadata', updateTotalTime);
+song.addEventListener('loadedmetadata', toHHMMSS);
 progressContainer.addEventListener('click', jumpTo);
 shuffleButton.addEventListener('click', shuffleButtonCLicked);
 repeatButton.addEventListener('click', repeatButtonCLicked);
-likeButton.addEventListener('click', likeButtonRender);
